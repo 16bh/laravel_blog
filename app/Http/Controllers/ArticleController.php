@@ -39,7 +39,7 @@ class ArticleController extends Controller
         if (is_null($article)) {
             abort(404);
         }
-        return view('articles.show')->withPost($article);
+        return view('articles.show',compact('article'));
     }
 
     public function create()

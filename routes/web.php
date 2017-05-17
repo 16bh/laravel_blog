@@ -11,8 +11,10 @@
 |
 */
 Route::get('/','ArticleController@index');
-Route::get('articles/{id}','ArticleController@show');
-Route::get('articles/{slug}','ArticleController@showSlug');
+Route::get('articles/{id}','ArticleController@show')
+->where('id', '[0-9]+');
+Route::get('articles/{slug}','ArticleController@showSlug')
+->where('slug', '[A-Za-z/-]+');
 Route::get('article/create','ArticleController@create');
 Route::post('article/store','ArticleController@store');
 Route::get('article/edit/{id}','ArticleController@edit');
