@@ -12,4 +12,9 @@
             </div>
         </div>
     </article>
+    <center>
+        <button class="btn btn-primary" onclick="history.go(-1)">
+                    « Back
+        </button>
+    </center>
 @endsection

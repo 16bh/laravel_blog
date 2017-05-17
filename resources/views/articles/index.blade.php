@@ -30,4 +30,6 @@
     </div>
 </article>
 @endforeach
+<h5>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</h5>
+{!! $articles->render() !!}
 @endsection

@@ -17,7 +17,10 @@ class ArticleController extends Controller
         // $articles = Article::all();
         // $articles = Article::latest()->get();
         // $articles = Article::where('published_at','<=',Carbon::now())->latest()->get();
-        $articles = Article::latest()->published()->get();
+        // $articles = Article::latest()->published()->get();
+        $articles = Article::where('published_at', '<=', Carbon::now())
+                ->orderBy('published_at', 'desc')
+                ->paginate(config('blog.posts_per_page'));
          return view('articles.index',compact('articles'));
     }
 
@@ -28,6 +31,15 @@ class ArticleController extends Controller
             abort(404);
         }
        return view('articles.show',compact('article'));
+    }
+
+    public function showSlug($slug)
+    {
+        $article = Article::whereSlug($slug)->firstOrFail();
+        if (is_null($article)) {
+            abort(404);
+        }
+        return view('articles.show')->withPost($article);
     }
 
     public function create()

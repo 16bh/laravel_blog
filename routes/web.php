@@ -12,6 +12,7 @@
 */
 Route::get('/','ArticleController@index');
 Route::get('articles/{id}','ArticleController@show');
+Route::get('articles/{slug}','ArticleController@showSlug');
 Route::get('article/create','ArticleController@create');
 Route::post('article/store','ArticleController@store');
 Route::get('article/edit/{id}','ArticleController@edit');
