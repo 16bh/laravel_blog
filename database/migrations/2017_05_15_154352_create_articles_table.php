@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('intro');
             $table->text('content');
-            $table->timestamp('published_at')->index();;
+            $table->timestamp('published_at')->index();
             $table->timestamps();
         });
     }

@@ -32,6 +32,16 @@ class Article extends Model
         }
     }
 
+    //将文章content的一部分转化为intro
+    public function setContentAttribute($value)
+    {
+        $this->attributes['content'] = $value;
+
+        if (! $this->exists) {
+            $this->attributes['intro'] = substr($value,0,50).'......';
+        }
+    }
+
     public function scopePublished($query)
     {
         $query->where('published_at','<=',Carbon::now());
