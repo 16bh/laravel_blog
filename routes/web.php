@@ -27,9 +27,7 @@ Route::get('admin', function () {
     return redirect('/admin/post');
 });
 
-//路由群组
-//namespace 命名空间
-//middleware 中间件
+//路由群组： namespace 命名空间、middleware 中间件
 $router->group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::resource('admin/post', 'PostController');
     Route::resource('admin/tag', 'TagController');
